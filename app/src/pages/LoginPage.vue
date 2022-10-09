@@ -2,7 +2,6 @@
 
   import { ref } from 'vue';
   import { useRouter } from 'vue-router';
-  import backgroundImage from './../assets/potm2208a.jpg';
   import doLogin from './../functions/doLogin';
 
   const router = useRouter();
@@ -59,68 +58,74 @@
 </script>
 
 <template>
-  <div 
-    :style="{
-      width: '100vw',
-      height: '100vh',
-      backgroundImage: `url(${backgroundImage})`,
-      backgroundSize: 'cover',
-      paddingTop: '100px'
-    }
-  ">
-    <v-card
-      outlined
-      elevation="3"
-      class="mx-auto pa-5"
-      width="50%"
+  <v-parallax
+    dark
+    src="./../assets/potm2208a.jpg"
+    :style="{ paddingTop: '100px' }"
+  >
+    <v-row
+      align="center"
+      justify="center"
     >
-      <v-form
-        ref="form"
-        lazy-validation
-        @submit="login"
+      <v-col
+        class="text-center"
+        cols="12"
       >
-
-        <v-card-title>
-          <h1 class="pt-10 pb-10">Login</h1>
-        </v-card-title>
-
-        <v-alert
-          :type=alertType
-          v-if="alertDisplay"
-          class="mb-10"
-        >{{alertMessage}}</v-alert>
-
-        <v-text-field
-          label="Email"
-          required
-          v-model="email"
-        ></v-text-field>
-
-        <v-text-field
-          label="Password"
-          type="password"
-          required
-          v-model="password"
-        ></v-text-field>
-
-        <v-btn
-          color="success"
-          class="mr-4"
-          type="submit"
-          :loading=buttonLoading
+        <v-card
+          outlined
+          elevation="3"
+          class="mx-auto pa-5"
+          width="50%"
         >
-          Login
-        </v-btn>
+          <v-form
+            ref="form"
+            lazy-validation
+            @submit="login"
+          >
 
-        <v-btn
-          color="primary"
-          class="mr-4"
-          @click="() => router.push('/cadastro')"
-        >
-          Criar conta
-        </v-btn>
+            <v-card-title>
+              <h1 class="pt-10 pb-10">Login</h1>
+            </v-card-title>
 
-      </v-form>
-    </v-card>
-  </div>
+            <v-alert
+              :type=alertType
+              v-if="alertDisplay"
+              class="mb-10"
+            >{{alertMessage}}</v-alert>
+
+            <v-text-field
+              label="Email"
+              required
+              v-model="email"
+            ></v-text-field>
+
+            <v-text-field
+              label="Senha"
+              type="password"
+              required
+              v-model="password"
+            ></v-text-field>
+
+            <v-btn
+              color="success"
+              class="mr-4"
+              type="submit"
+              :loading=buttonLoading
+            >
+              Login
+            </v-btn>
+
+            <v-btn
+              color="primary"
+              class="mr-4"
+              @click="() => router.push('/cadastro')"
+            >
+              Criar conta
+            </v-btn>
+
+          </v-form>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-parallax>
 </template>
