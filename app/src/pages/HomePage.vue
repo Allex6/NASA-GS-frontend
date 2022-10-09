@@ -27,8 +27,6 @@
                 }
             });
 
-            console.log('data', data);
-
             APODImage.value = data.url;
 
         } catch (err) {
